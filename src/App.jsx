@@ -1,12 +1,23 @@
 import { useState, useEffect } from 'react'
-import { ChakraBaseProvider, Box, ChakraProvider, Container,  } from '@chakra-ui/react'
+import { ChakraBaseProvider, Box, ChakraProvider, Container, Image, Stack,  } from '@chakra-ui/react'
 import TodoList from './components/TodoList';
 import Input from './components/Input';
 import SelectFilter from './components/SelectFilter';
+import './index.css';
+import fondo from '../src/assets/img/fondo.14.jpg'
+import Footer from './components/footer'; 
+
+
 import { saveTasks, loadTasks } from '../src/Utils/LocalStorage';
 const App =() => {
   const [tasks, setTasks] = useState(loadTasks());
   const [filter, setFilter] = useState('all');
+
+  
+
+  const [backgroundImage, setBackgroundImage] = useState(fondo);
+
+
 
   //cargar tareas en el LocalStorage al iniciar
 
@@ -51,24 +62,66 @@ const App =() => {
   });
 
   return (
+    <div
+    style={{ 
+      backgroundImage: `url(${fondo})`, 
+       backgroundSize: 'cover', 
+
+      backgroundAttachment: 'fixed', 
+        backgroundRepeat: 'no-repeat',
+        boxSizing: "border-box",
+       overflow: 'hidden',
+      display: 'flex',
+       alignItems:'center',
+      justifyContent:'center',
+     margin:'0',
+    padding: '0',
+    boxSizing: 'border-box',
+     
+
+     
+  
+      }}>
+
+   
     <ChakraProvider>
+    <Stack minHeight="100vh" position="relative">
+        
+        <Box
+          position="absolute"
+          top={0}
+          left={0}
+          width="100%"
+          height="100vh"
+          overflow='hidden'
+          zIndex={-1}
+        >
+          <img
+            src={backgroundImage}
+            autoPlay
+            loop
+            muted
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100vh",
+              overflow:'hidden'
+            }}
+          />
+        </Box>       
+      
+</Stack>
       <Container>
-        <Box margin="auto" pendding="10px" bg="gray.50" borderRadius="sm"
-           ml={2} mr={2} p={1}>
-          
-            <Box
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              position="absolute"
-              top={0}
-              left={0}
-              width="100%"
-              height="100%"
-              zIndex={-1}
-              mb={10}
-            ></Box> 
-            
+        <Box margin="auto" 
+        pendding="10px" bg="gray.30"
+         borderRadius="sm"
+         
+           maxW="100%" 
+           boxSizing= 'border-box'
+             
+           >
+
+         
           <Input addTask={addTask} />
           <SelectFilter setFilter={setFilter} />
           <TodoList 
@@ -76,12 +129,27 @@ const App =() => {
           toggleTask={toggleTask}
           deleteTask= {deleteTask}/>
         </Box>
+
+    
+        
+      
+
+       
         
       </Container>
+
+
     </ChakraProvider>
+
+    <Footer />
+  </div>
+    
   )
 
 
 }
 
 export default App;
+
+
+
