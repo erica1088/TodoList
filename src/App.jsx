@@ -18,9 +18,15 @@ import Item from "../src/components/Item"
 import List from "./components/List";
 
 
+<<<<<<< HEAD
 
 
 const App = () => {
+=======
+import { saveTasks, loadTasks } from '../src/Utils/LocalStorage';
+import { linearGradient } from 'framer-motion/client';
+const App =() => {
+>>>>>>> f8464db (modifcaciones)
   const [tasks, setTasks] = useState(loadTasks());
   const [filter, setFilter] = useState("all");
 
@@ -76,6 +82,7 @@ const App = () => {
 
   return (
     <div
+<<<<<<< HEAD
       height="100vh"
       style={{
         backgroundImage: `url(${fondo})`,
@@ -143,5 +150,93 @@ const App = () => {
     </div>
   );
 };
+=======
+    style={{ 
+    
+       backgroundSize: 'cover', 
+       background:
+            "linear-gradient(45deg, rgb(107, 46, 199), rgb(201, 91, 221))",
+      backgroundAttachment: 'fixed', 
+        backgroundRepeat: 'no-repeat',
+        boxSizing: "border-box",
+       overflow: 'hidden',
+      display: 'flex',
+       alignItems:'center',
+      justifyContent:'center',
+     margin:'0',
+    padding: '0',
+
+
+     
+  
+      }}>
+
+   
+    <ChakraProvider>
+    <Stack minHeight="100vh" position="relative">
+        
+        <Box
+          position="absolute"
+          top={0}
+          left={0}
+          width="100%"
+          height="100vh"
+          overflow='hidden'
+          zIndex={-1}
+        >
+          <img
+            src={backgroundImage}
+            alt="Background"
+            autoPlay
+            loop
+            muted
+            style={{
+              objectFit: "cover",
+              width: "100%",
+              height: "100vh",
+              overflow:'hidden'
+            }}
+          />
+        </Box>       
+      
+</Stack>
+      <Container >
+        <Box      margin="auto"
+            p={{ base: '5', sm: '8', md: '10' }}
+            bg="rgba(255, 255, 255, 0.8)"
+            borderRadius="lg"
+            boxShadow="sm"
+          
+             
+           >
+
+         
+          <Input addTask={addTask} />
+          <SelectFilter setFilter={setFilter} />
+          <TodoList 
+          tasks={filteredTasks}
+          toggleTask={toggleTask}
+          deleteTask= {deleteTask}/>
+        </Box>
+
+    
+        
+      
+
+       
+        
+      </Container>
+
+
+    </ChakraProvider>
+
+    <Footer />
+  </div>
+    
+  )
+
+
+}
+>>>>>>> f8464db (modifcaciones)
 
 export default App;
