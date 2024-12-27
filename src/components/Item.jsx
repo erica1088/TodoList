@@ -9,6 +9,7 @@ import {
   Button,
   IconButton,
   Text,
+  Box,
   useDisclosure,
 } from "@chakra-ui/react";
 import { CheckIcon, DeleteIcon } from "@chakra-ui/icons";
@@ -31,6 +32,7 @@ const Item = ({ task, toggleTask, deleteTask }) => {
       borderWidth="1px"
       borderRadius="md"
       mb="4"
+   
       display="flex"
       flexDirection={{ base: "column", sm: "row" }}
       alignItems="center"
@@ -41,7 +43,7 @@ const Item = ({ task, toggleTask, deleteTask }) => {
         flex={1}
         textDecoration={task.completed ? "line-through" : "none"}
         fontSize={{ base: "md", sm: "lg" }}
-        color={task.completed ? "gray.100" : "black"}
+        color={task.completed ? "blue.800" : "black"}
       >
         {task.text}
       </Text>
@@ -63,8 +65,12 @@ const Item = ({ task, toggleTask, deleteTask }) => {
           icon={<DeleteIcon />}
           onClick={onOpen}
           colorScheme="red"
+          size="sm"
           aria-label={`Eliminar tarea: ${task.text}`}
         />
+         </Box>
+
+
 
         <AlertDialog
           motionPreset="slideInBottom"
@@ -75,22 +81,21 @@ const Item = ({ task, toggleTask, deleteTask }) => {
         >
           <AlertDialogOverlay />
           <AlertDialogContent>
-            <AlertDialogHeader>
-              ¿Está seguro que desea eliminar esta tarea?
-            </AlertDialogHeader>
+            <AlertDialogHeader>¿Está seguro que desea eliminar esta tarea?</AlertDialogHeader>
+
             <AlertDialogCloseButton />
             <AlertDialogFooter>
               <Button ref={cancelRef} onClick={onClose}>
                 Cancelar
               </Button>
-              <Button ml={3} onClick={confirmDelete}>
+              <Button ml={3} colorScheme="red"  onClick={confirmDelete}>
                 Eliminar
               </Button>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
       </Box>
-    </Box>
+   
   );
 };
 

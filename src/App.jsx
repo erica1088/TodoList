@@ -62,11 +62,11 @@ const App =() => {
   });
 
   return (
-    <div
+    <div height="100vh"
     style={{ 
       backgroundImage: `url(${fondo})`, 
        backgroundSize: 'cover', 
-
+        
       backgroundAttachment: 'fixed', 
         backgroundRepeat: 'no-repeat',
         boxSizing: "border-box",
@@ -85,7 +85,7 @@ const App =() => {
 
    
     <ChakraProvider>
-    <Stack minHeight="100vh" position="relative">
+    <Stack minHeight="100vh" position="relative" border="2px">
         
         <Box
           position="absolute"

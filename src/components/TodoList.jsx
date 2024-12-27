@@ -13,7 +13,7 @@ import { div } from "framer-motion/client";
 
 const TodoList = ({ tasks, toggleTask, deleteTask }) => {
   return (
-    <Box maxW="800px" mx="auto" bg="gray.100" p={{ base: 4, sm: 6 }}>
+    <Box maxW="800px" mx="auto" bg="blue.800" p={{ base: 4, sm: 6 }}>
       <List spacing={3}>
         {tasks.map(({ id, text, completed }) => (
           <ListItem
@@ -32,6 +32,7 @@ const TodoList = ({ tasks, toggleTask, deleteTask }) => {
                 isChecked={completed}
                 onChange={() => toggleTask(id)}
                 colorScheme="teal"
+                color="white"
                 size="lg"
                 aria-label={`Marcar tarea ${text} como completada`}
                 mb={{ base: 2, sm: 0 }}

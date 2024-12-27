@@ -4,7 +4,7 @@ import { div } from "framer-motion/client";
 
 const SelectFilter = ({ setFilter, currentFilter }) => {
   return (
-    <Box p={{ base: "20px", sm: "30px" }} textAlign="center" bg="gray.100">
+    <Box p={{ base: "20px", sm: "30px" }} textAlign="center" bg="blue.800" >
       <FormControl>
         <FormLabel
           fontSize={{ base: "11px", sm: "15px" }}
@@ -20,7 +20,9 @@ const SelectFilter = ({ setFilter, currentFilter }) => {
           borderWidth="2px"
           fontSize={{ base: "13px", sm: "15px" }}
           size="lg"
+
           w="full"
+       
         >
           <option value="Todo">Todo</option>
           <option value="completed">Completado</option>

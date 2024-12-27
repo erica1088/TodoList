@@ -25,8 +25,10 @@ const InputTask = ({ addTask }) => {
   return (
     <Box
       p={{ base: "20px", sm: "30px" }}
-      bg="gray.100"
+      bg="blue.800"
       textAlign="center"
+      
+      borderRadius="sm"
       fontSize={{ base: "15px", sm: "30px" }}
       fontFamily="Arial, sans-serif"
     >
@@ -63,6 +65,7 @@ const InputTask = ({ addTask }) => {
           value={task}
           onChange={(e) => setTask(e.target.value)}
           placeholder="Agrega una nueva tarea"
+          color="white"
           size="lg"
           marginBottom="20px"
           mb="20px"
