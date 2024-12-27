@@ -114,7 +114,7 @@ const App =() => {
       <Container>
         <Box margin="auto" 
         pendding="10px" bg="gray.30"
-         borderRadius="sm"
+         borderRadius="lg"
          
            maxW="100%" 
            boxSizing= 'border-box'
