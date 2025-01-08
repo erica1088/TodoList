@@ -24,7 +24,6 @@ import List from "./components/List";
 const App = () => {
 =======
 import { saveTasks, loadTasks } from '../src/Utils/LocalStorage';
-import { linearGradient } from 'framer-motion/client';
 const App =() => {
 >>>>>>> f8464db (modifcaciones)
   const [tasks, setTasks] = useState(loadTasks());
@@ -81,6 +80,7 @@ const App =() => {
   });
 
   return (
+<<<<<<< HEAD
     <div
 <<<<<<< HEAD
       height="100vh"
@@ -151,11 +151,13 @@ const App =() => {
   );
 };
 =======
+=======
+    <div height="100vh"
+>>>>>>> e84a6a9 (modificaciones)
     style={{ 
-    
+      backgroundImage: `url(${fondo})`, 
        backgroundSize: 'cover', 
-       background:
-            "linear-gradient(45deg, rgb(107, 46, 199), rgb(201, 91, 221))",
+        
       backgroundAttachment: 'fixed', 
         backgroundRepeat: 'no-repeat',
         boxSizing: "border-box",
@@ -165,7 +167,8 @@ const App =() => {
       justifyContent:'center',
      margin:'0',
     padding: '0',
-
+    boxSizing: 'border-box',
+     
 
      
   
@@ -173,7 +176,7 @@ const App =() => {
 
    
     <ChakraProvider>
-    <Stack minHeight="100vh" position="relative">
+    <Stack minHeight="100vh" position="relative" border="2px">
         
         <Box
           position="absolute"
@@ -186,7 +189,6 @@ const App =() => {
         >
           <img
             src={backgroundImage}
-            alt="Background"
             autoPlay
             loop
             muted
@@ -200,6 +202,7 @@ const App =() => {
         </Box>       
       
 </Stack>
+<<<<<<< HEAD
       <Container >
         <Box      margin="auto"
             p={{ base: '5', sm: '8', md: '10' }}
@@ -207,6 +210,15 @@ const App =() => {
             borderRadius="lg"
             boxShadow="sm"
           
+=======
+      <Container>
+        <Box margin="auto" 
+        pendding="10px" bg="gray.30"
+         borderRadius="lg"
+         
+           maxW="100%" 
+           boxSizing= 'border-box'
+>>>>>>> e84a6a9 (modificaciones)
              
            >
 
