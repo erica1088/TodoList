@@ -12,7 +12,6 @@ const footer = () =>{
         position='fixed'
         bottom='0'
         width='100%'
-      
         >
 
             <Text  textAlign="center" mt={4} fontSize="sm">
@@ -25,4 +24,3 @@ const footer = () =>{
     )
 }
 
-export default footer;
