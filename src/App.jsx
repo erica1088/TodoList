@@ -14,6 +14,7 @@ import "./index.css";
 import fondo from "../src/assets/img/fondo.14.jpg";
 import Footer from "./components/footer";
 import { saveTasks, loadTasks,  } from "./Utils/LocalStorage";
+import Item from "../src/components/Item"
 import List from "./components/List";
 
 
@@ -24,17 +25,29 @@ const App = () => {
   const [filter, setFilter] = useState("all");
 
   const [backgroundImage, setBackgroundImage] = useState(fondo);
+ const saveTasks = (tasks) => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  };
 
   //cargar tareas en el LocalStorage al iniciar
 
   useEffect(() => {
-    const loadedTasks = loadTasks();
-    setTasks(loadedTasks);
+    const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    setTasks(savedTasks);
   }, []);
 
   useEffect(() => {
     saveTasks(tasks);
   }, [tasks]);
+
+  // useEffect(() => {
+  //   const loadedTasks = loadTasks();
+  //   setTasks(loadedTasks);
+  // }, []);
+
+  // useEffect(() => {
+  //   saveTasks(tasks);
+  // }, [tasks]);
 
   const addTask = (task) => {
     setTasks([...tasks, { id: Date.now(), text: task, completed: false }]);
