@@ -13,11 +13,7 @@ import { div } from "framer-motion/client";
 
 const TodoList = ({ tasks, toggleTask, deleteTask }) => {
   return (
-<<<<<<< HEAD
     <Box maxW="800px" mx="auto" bg="blue.800" p={{ base: 4, sm: 6 }}>
-=======
-    <Box maxW="800px" mx="auto" bg="blue.800" p={{ base: 4, sm: 8 }} >
->>>>>>> f8464db (modifcaciones)
       <List spacing={3}>
         {tasks.map(({ id, text, completed }) => (
           <ListItem
@@ -25,9 +21,7 @@ const TodoList = ({ tasks, toggleTask, deleteTask }) => {
             display="flex"
             alignItems="center"
             justifyContent="space-between"
-      
           >
-
             <Flex
               align="center"
               justifyContent="space-between"
@@ -38,18 +32,10 @@ const TodoList = ({ tasks, toggleTask, deleteTask }) => {
                 isChecked={completed}
                 onChange={() => toggleTask(id)}
                 colorScheme="teal"
-<<<<<<< HEAD
                 color="white"
-=======
-                gap= "2"
->>>>>>> f8464db (modifcaciones)
                 size="lg"
-                width="100%"
-                fontSize={{ base: "14px", sm: "15px" }}
-                color="white"
-                
                 aria-label={`Marcar tarea ${text} como completada`}
-                mb={{ base: 2, sm: 10 }}
+                mb={{ base: 2, sm: 0 }}
               >
                 <Text as={completed ? "del" : "span"}>{text}</Text>
               </Checkbox>
@@ -59,13 +45,9 @@ const TodoList = ({ tasks, toggleTask, deleteTask }) => {
                 icon={<MdDelete />} // Usar MdDelete para eliminar
                 onClick={() => deleteTask(id)}
                 colorScheme="red"
-                
                 size="sm"
-                ml={{ base: 3, sm: 0 }}
+                ml={{ sm: 3 }}
                 mt={{ base: 2, sm: 0 }}
-                mb={{ base: 2, sm: 10 }}
-                
-               
               />
             </Flex>
           </ListItem>
