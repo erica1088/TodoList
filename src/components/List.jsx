@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Item from '../components/Item';
+import { loadTasks } from '../Utils/LocalStorage';
 
-const List = ({ tasks, toggleTask, deleteTask}) =>{
+const List = () =>{
+  const [tasks , setTasks, saveTasks] = useState(loadTasks())
 
-    if (tasks.length === 0){
-        return <p>No hay tareas para mostrar</p>
-    }
+ 
+    const toggleTask = (taskId) => {
+      const updatedTasks = tasks.map((task) =>
+        task.id === taskId ? { ...task, completed: !task.completed } : task
+      );
+      setTasks(updatedTasks);
+      saveTasks(updatedTasks);
+    };
+
+    const deleteTask = (taskId) => {
+      const updatedTasks = tasks.filter((task) => task.id !== taskId);
+      setTasks(updatedTasks);
+      saveTasks(updatedTasks);
+    };
+  
+
     return (
         <div>
         {tasks.map((task) => (
-          <Item key={task.id} task={task} toggleTask={toggleTask} deleteTask={deleteTask} />
+          <Item 
+          key={task.id} 
+          task={task} 
+          tasks= {tasks} 
+          toggleTask={toggleTask} 
+          setTasks={setTasks} 
+          deleteTask={deleteTask} />
         ))}
       </div>
      

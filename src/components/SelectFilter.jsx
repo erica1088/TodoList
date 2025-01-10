@@ -21,7 +21,7 @@ const SelectFilter = ({ setFilter, currentFilter }) => {
           fontSize={{ base: "13px", sm: "15px" }}
           size="lg"
 
-          w="full"
+        
        
         >
           <option value="Todo">Todo</option>

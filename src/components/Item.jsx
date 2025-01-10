@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef, useState } from "react";
 import {
   AlertDialog,
   AlertDialogCloseButton,
@@ -14,15 +14,28 @@ import {
 } from "@chakra-ui/react";
 import { CheckIcon, DeleteIcon } from "@chakra-ui/icons";
 
-import { saveTasks } from "./utils/LocalStorage";
+import { saveTasks } from "../Utils/LocalStorage";
 import { SiNba } from "react-icons/si";
 
-const Item = ({ task, toggleTask, deleteTask }) => {
+const Item = ({ task, setTasks, tasks, toggleTask, deleteTask }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef();
+  const [taskIdToDelete, setTaskIdToDelete] = useState(null);
 
-  const confirmDelete = () => {
-    deleteTask(task.id);
+  // const toggleTask = (taskId) =>  {
+  //   const updatedTasks = tasks.map((task) =>
+  //   task.id === taskId ? {...task, completed: !task.completed} : task)
+
+  //   setTasks(updatedTasks);
+  //   saveTasks(updatedTasks);
+  // }
+
+  const handleDeleteTask = () => {
+    const updatedTasks = tasks.filter((task) => task.id !== taskIdToDelete);
+    setTasks(updatedTasks);
+
+    saveTasks(updatedTasks);
+
     onClose();
   };
 
@@ -32,7 +45,6 @@ const Item = ({ task, toggleTask, deleteTask }) => {
       borderWidth="1px"
       borderRadius="md"
       mb="4"
-   
       display="flex"
       flexDirection={{ base: "column", sm: "row" }}
       alignItems="center"
@@ -63,39 +75,43 @@ const Item = ({ task, toggleTask, deleteTask }) => {
 
         <IconButton
           icon={<DeleteIcon />}
-          onClick={onOpen}
+          onClick={() => {
+            setTaskIdToDelete(task.id);
+            onOpen();
+          }}
           colorScheme="red"
           size="sm"
           aria-label={`Eliminar tarea: ${task.text}`}
         />
-         </Box>
+      </Box>
 
-
-
-        <AlertDialog
-          motionPreset="slideInBottom"
-          leastDestructiveRef={cancelRef}
-          onClose={onClose}
-          isOpen={isOpen}
-          isCentered
-        >
-          <AlertDialogOverlay />
+      <AlertDialog
+        motionPreset="slideInBottom"
+        leastDestructiveRef={cancelRef}
+        onClose={onClose}
+        isOpen={isOpen}
+        isCentered
+      >
+        <AlertDialogOverlay>
           <AlertDialogContent>
-            <AlertDialogHeader>¿Está seguro que desea eliminar esta tarea?</AlertDialogHeader>
+            <AlertDialogHeader fontSize="lg" fontWeight="bold">
+              ¿Está seguro que desea eliminar esta tarea?
+            </AlertDialogHeader>
 
             <AlertDialogCloseButton />
+
             <AlertDialogFooter>
               <Button ref={cancelRef} onClick={onClose}>
                 Cancelar
               </Button>
-              <Button ml={3} colorScheme="red"  onClick={confirmDelete}>
+              <Button ml={3} colorScheme="red" onClick={handleDeleteTask}>
                 Eliminar
               </Button>
             </AlertDialogFooter>
           </AlertDialogContent>
-        </AlertDialog>
-      </Box>
-   
+        </AlertDialogOverlay>
+      </AlertDialog>
+    </Box>
   );
 };
 

@@ -8,19 +8,22 @@ const InputTask = ({ addTask }) => {
   const toast = useToast();
 
   const handleAdd = () => {
-    if (task.trim()) {
-      addTask(task);
-      setTask("");
-    } else {
+    if (task.trim() === "") {
       toast({
         title: "Error",
         description: "Por favor ingresa una tarea",
-        status: "Error",
+        status: "error",
         duration: 3000,
         isClosable: true,
-      });
+      })
+    } else {
+      addTask(task);
+      setTask(""); // limpiar el campo despues de agregar
     }
+
   };
+
+
 
   return (
     <Box
