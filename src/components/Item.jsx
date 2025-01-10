@@ -1,108 +1,40 @@
-import { useRef, useState } from "react";
-import {
-  AlertDialog,
-  AlertDialogCloseButton,
-  AlertDialogContent,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  Button,
-  IconButton,
-  Text,
-  Box,
-  useDisclosure,
-} from "@chakra-ui/react";
-import { CheckIcon, DeleteIcon } from "@chakra-ui/icons";
-import { useState, useRef } from 'react';
+import React, { useState } from 'react';
+import Item from '../components/Item';
+import { loadTasks } from '../Utils/LocalStorage';
 
-import { saveTasks } from "../Utils/LocalStorage";
-import { SiNba } from "react-icons/si";
+const List = () =>{
+  const [tasks , setTasks, saveTasks] = useState(loadTasks())
 
-const Item = ({ task, setTasks, tasks, toggleTask, deleteTask }) => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const cancelRef = useRef();
+ 
+    const toggleTask = (taskId) => {
+      const updatedTasks = tasks.map((task) =>
+        task.id === taskId ? { ...task, completed: !task.completed } : task
+      );
+      setTasks(updatedTasks);
+      saveTasks(updatedTasks);
+    };
 
-  const confirmDelete = () => {
-    deleteTask(task.id);
-    onClose();
-  };
-
-
+    const deleteTask = (taskId) => {
+      const updatedTasks = tasks.filter((task) => task.id !== taskId);
+      setTasks(updatedTasks);
+      saveTasks(updatedTasks);
+    };
   
 
-  return (
-    <Box
-      p={{ base: "10px", sm: "15px" }}
-      borderWidth="1px"
-      borderRadius="md"
-      mb="4"
-      display="flex"
-      flexDirection={{ base: "column", sm: "row" }}
-      alignItems="center"
-      justifyContent="space-between"
-    >
-      <Text
-        as={task.completed ? "del" : "span"}
-        flex={1}
-        textDecoration={task.completed ? "line-through" : "none"}
-        fontSize={{ base: "md", sm: "lg" }}
-        color={task.completed ? "gray.100" : "black"}
-      >
-        {task.text}
-      </Text>
-
-      {/* Boton para marcar como completado */}
-      <Box display="flex" gap="10px" mt={{ base: "10px", sm: "0" }}>
-        <IconButton
-          icon={<CheckIcon />}
-          onClick={() => toggleTask(task.id)}
-          colorScheme="teal"
-          aria-label="Marcar como completado"
-          marginRight="10px"
-          size="sm"
-        />
-
-        {/* Boton para elminar tarea */}
-
-        <IconButton
-          icon={<DeleteIcon />}
-          onClick={onOpen}
-          colorScheme="red"
-          size="sm"
-          aria-label={`Eliminar tarea: ${task.text}`}
-          
-        />
-
-        <AlertDialog
-          motionPreset="slideInBottom"
-          leastDestructiveRef={cancelRef}
-          onClose={onClose}
-          isOpen={isOpen}
-          isCentered
-        >
-          <AlertDialogOverlay />
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              ¿Está seguro que desea eliminar esta tarea?
-            </AlertDialogHeader>
-
-            <AlertDialogCloseButton />
-
-            <AlertDialogFooter>
-              <Button ref={cancelRef} onClick={onClose}  backgroundColor={"green.500"}  color={"black"}>
-                Cancelar
-              </Button>
-              <Button ml={3} onClick={confirmDelete}>
-                Eliminar
-              </Button>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
-      </Box>
-    </Box>
-  
-
-);
+    return (
+        <div>
+        {tasks.map((task) => (
+          <Item 
+          key={task.id} 
+          task={task} 
+          tasks= {tasks} 
+          toggleTask={toggleTask} 
+          setTasks={setTasks} 
+          deleteTask={deleteTask} />
+        ))}
+      </div>
+     
+    );
 };
 
-export default Item;
+export default List;
