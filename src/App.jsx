@@ -18,14 +18,9 @@ import Item from "../src/components/Item"
 import List from "./components/List";
 
 
-<<<<<<< HEAD
 
 
 const App = () => {
-=======
-import { saveTasks, loadTasks } from '../src/Utils/LocalStorage';
-const App =() => {
->>>>>>> f8464db (modifcaciones)
   const [tasks, setTasks] = useState(loadTasks());
   const [filter, setFilter] = useState("all");
 
@@ -80,9 +75,7 @@ const App =() => {
   });
 
   return (
-<<<<<<< HEAD
     <div
-<<<<<<< HEAD
       height="100vh"
       style={{
         backgroundImage: `url(${fondo})`,
@@ -150,105 +143,5 @@ const App =() => {
     </div>
   );
 };
-=======
-=======
-    <div height="100vh"
->>>>>>> e84a6a9 (modificaciones)
-    style={{ 
-      backgroundImage: `url(${fondo})`, 
-       backgroundSize: 'cover', 
-        
-      backgroundAttachment: 'fixed', 
-        backgroundRepeat: 'no-repeat',
-        boxSizing: "border-box",
-       overflow: 'hidden',
-      display: 'flex',
-       alignItems:'center',
-      justifyContent:'center',
-     margin:'0',
-    padding: '0',
-    boxSizing: 'border-box',
-     
-
-     
-  
-      }}>
-
-   
-    <ChakraProvider>
-    <Stack minHeight="100vh" position="relative" border="2px">
-        
-        <Box
-          position="absolute"
-          top={0}
-          left={0}
-          width="100%"
-          height="100vh"
-          overflow='hidden'
-          zIndex={-1}
-        >
-          <img
-            src={backgroundImage}
-            autoPlay
-            loop
-            muted
-            style={{
-              objectFit: "cover",
-              width: "100%",
-              height: "100vh",
-              overflow:'hidden'
-            }}
-          />
-        </Box>       
-      
-</Stack>
-<<<<<<< HEAD
-      <Container >
-        <Box      margin="auto"
-            p={{ base: '5', sm: '8', md: '10' }}
-            bg="rgba(255, 255, 255, 0.8)"
-            borderRadius="lg"
-            boxShadow="sm"
-          
-=======
-      <Container>
-        <Box margin="auto" 
-        pendding="10px" bg="gray.30"
-         borderRadius="lg"
-         
-           maxW="100%" 
-           boxSizing= 'border-box'
->>>>>>> e84a6a9 (modificaciones)
-             
-           >
-
-         
-          <Input addTask={addTask} />
-          <SelectFilter setFilter={setFilter} />
-          <TodoList 
-          tasks={filteredTasks}
-          toggleTask={toggleTask}
-          deleteTask= {deleteTask}/>
-        </Box>
-
-    
-        
-      
-
-       
-        
-      </Container>
-
-
-    </ChakraProvider>
-
-    <Footer />
-  </div>
-    
-  )
-
-
-}
->>>>>>> f8464db (modifcaciones)
 
 export default App;
