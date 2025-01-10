@@ -101,7 +101,8 @@ const Item = ({ task, setTasks, tasks, toggleTask, deleteTask }) => {
       </Box>
     </Box>
   
-  );
+
+);
 };
 
 export default Item;
