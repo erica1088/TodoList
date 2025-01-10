@@ -21,14 +21,6 @@ const List = () =>{
     };
   
 
-<<<<<<< HEAD
-=======
-
-     if (tasks.length === 0){
-        return <p>No hay tareas para mostrar</p>
-    }
-    
->>>>>>> f8464db (modifcaciones)
     return (
         <div>
         {tasks.map((task) => (
