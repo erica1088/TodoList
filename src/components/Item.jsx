@@ -17,18 +17,12 @@ import { CheckIcon, DeleteIcon } from "@chakra-ui/icons";
 import { saveTasks } from "../Utils/LocalStorage";
 import { SiNba } from "react-icons/si";
 
-const Item = ({ task, setTasks, tasks, toggleTask, deleteTask }) => {
+const Item = ({ task, setTasks, tasks, toggleTask }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const cancelRef = useRef();
   const [taskIdToDelete, setTaskIdToDelete] = useState(null);
 
-  // const toggleTask = (taskId) =>  {
-  //   const updatedTasks = tasks.map((task) =>
-  //   task.id === taskId ? {...task, completed: !task.completed} : task)
 
-  //   setTasks(updatedTasks);
-  //   saveTasks(updatedTasks);
-  // }
 
   const handleDeleteTask = () => {
     const updatedTasks = tasks.filter((task) => task.id !== taskIdToDelete);
@@ -116,3 +110,4 @@ const Item = ({ task, setTasks, tasks, toggleTask, deleteTask }) => {
 };
 
 export default Item;
+

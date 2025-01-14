@@ -34,4 +34,3 @@ const SelectFilter = ({ setFilter, currentFilter }) => {
 };
 
 export default SelectFilter;
- 
