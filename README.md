@@ -14,6 +14,7 @@ Chakra UI: Biblioteca de componentes de React para crear interfaces accesibles y
 React Icons: Para usar Iconos interactivos.
 Yarn: Gestor de dependencias utilizado en el proyecto.
 
+https://github.com/erica1088/TodoList/blob/e1d97b9e64e272c12ebd48ab11bc72eaa77606a1/imgreadme.png
 
 
 
