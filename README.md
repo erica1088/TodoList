@@ -1,8 +1,8 @@
-<<<<<<< HEAD
 
 
 
-=======
+
+
 Todo List
 
 Este es un proyecto de tareas (To-Do-List) construido con React y Chakra UI. Permite agregar tareas, marcarlas como completadas, eliminarlas y filtrar tareas segun su estado (completadas, pendientes o todas). Las tareas se guardan en el "LocalStorage" para que persistan entre sesiones.
@@ -16,4 +16,5 @@ Yarn: Gestor de dependencias utilizado en el proyecto.
 
 
 
->>>>>>> b3be29b (Update README.md)
+
+
