@@ -16,6 +16,4 @@ Yarn: Gestor de dependencias utilizado en el proyecto.
 
 
 
-
-
-
+![imgreadme](https://github.com/user-attachments/assets/d927829b-3446-41a8-86c9-6f3e59ec18d9)
