@@ -120,7 +120,7 @@ const App = () => {
           <Box
             margin="auto"
             padding="10px"
-            bg="gray.30"
+            bg="blue.30"
             borderRadius="lg"
             maxW="100%"
             boxSizing="border-box"
